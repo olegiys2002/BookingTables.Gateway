@@ -1,0 +1,20 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "booking-table-front": "StartWithoutDebugging",
+        "bookingtables.gateway": "StartDebugging",
+        "bookingtablesapi": "StartWithoutDebugging",
+        "cache": "StartWithoutDebugging",
+        "elasticsearch": "StartWithoutDebugging",
+        "emailsender": "StartWithoutDebugging",
+        "emailsender-db": "StartWithoutDebugging",
+        "identity": "StartWithoutDebugging",
+        "kibana": "StartWithoutDebugging",
+        "rabbitmq": "StartWithoutDebugging"
+      }
+    }
+  }
+}
