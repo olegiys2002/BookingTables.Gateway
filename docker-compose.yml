@@ -42,8 +42,16 @@ services:
      - 6379:6379
     container_name: redis
   
+  #rabbitmq:
+  #  image: rabbitmq:3-management
+  #  ports:
+  #   - 5672:5672
+  #   - 15672:15672
+  #  container_name: rabbit
+  #  restart: always
+
   rabbitmq:
-    image: rabbitmq:3-management
+    image: masstransit/rabbitmq:latest
     ports:
      - 5672:5672
      - 15672:15672
@@ -79,8 +87,6 @@ services:
     depends_on:
       - cache
 
-
-  
   emailsender-db:
    image: mongo
    ports:
@@ -91,7 +97,6 @@ services:
    volumes:
       - mongodata:/data/db
 
-
   booking-table-front:
    build:
     context: ./../BookingTablesFront/
@@ -99,7 +104,6 @@ services:
    container_name: booking-table-front
    ports:
      - 80:80
-
 
   elasticsearch:
     container_name: elasticsearch
@@ -115,7 +119,6 @@ services:
      - discovery.type=single-node
      - xpack.security.enabled=false
 
-
   kibana:
     container_name: kibana
     image: kibana:8.4.3
@@ -125,9 +128,7 @@ services:
      - elasticsearch
     environment:
      - ELASTICSEARCH_URL=http://localhost:9200
-  
-
-  
+   
 volumes:
     esdata:
         driver: local 
